@@ -1,0 +1,133 @@
+﻿<Window x:Class="OneLock.WindowMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OneLock"
+        mc:Ignorable="d"
+        Title="OnLock" Height="450" Width="800" Background="White" MinHeight="450" MinWidth="800"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid ShowGridLines="False" Style="{DynamicResource GridStyle}">
+        <Grid.RowDefinitions >
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="345*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Column="0" Grid.Row="0" Style="{DynamicResource RectgStyleOne}" />
+        <Rectangle Grid.Column="0"  Grid.Row="1"  Style="{DynamicResource RectgStyleOne}"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Image Grid.Column="0" Grid.Row="0" Source="Drawing/Ico3.png" Height="88" Margin="0,10,0,0"/>
+            <Button x:Name="BtnPassw" Height="50" Margin="0,15,0,0" 
+                    Content="Пароли" FontFamily="Times new Roman" FontSize="18" 
+                    BorderThickness="0" MouseEnter="BtnPassw_MouseEnter" MouseLeave="BtnPassw_MouseLeave"
+                    Click="BtnPassw_Click" Style="{DynamicResource ButtonStyle}"/>
+            <Button x:Name="BtnCreate" Height= "50" Margin="0,10,0,0" 
+                    Content="Генератор" FontFamily="Times New Roman" FontSize="18"
+                    BorderThickness="0" Style="{DynamicResource ButtonStyle}"
+                    MouseEnter="BtnPassw_MouseEnter" MouseLeave="BtnPassw_MouseLeave" Click="BtnCreate_Click"/>
+            <Button x:Name="BtnProperties" Height= "50" Margin="0,10,0,0" 
+                    Content="Настройки" FontFamily="Times New Roman" FontSize="18" 
+                    BorderThickness="0" Style="{DynamicResource ButtonStyle}"
+                    MouseEnter="BtnPassw_MouseEnter" MouseLeave="BtnPassw_MouseLeave" Click="BtnProperties_Click"/>
+        </StackPanel>
+
+        <StackPanel x:Name="StpPass" Grid.Column="1" Grid.Row="0"  Visibility="Visible">
+            <ComboBox x:Name="CmbPass" Height="50" Margin="100,5,100,0" 
+                      FontFamily="Times new Roman" FontSize="20" 
+                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                      IsReadOnly="True" />
+
+            <Grid Height="281" Margin="0,0,0,0">
+                <Label Content="Логин:" HorizontalContentAlignment="Center"
+                       Margin="50,38,49.6,213" FontFamily="Times new Roman" FontSize="20" 
+                       Style="{DynamicResource LabelStyle}"/>
+                <TextBox HorizontalContentAlignment="Center" Margin="245,75,228.6,170"
+                         FontFamily="Times new Roman" FontSize="25" IsReadOnly="True" 
+                         BorderThickness="0,0,0,2" Background="{x:Null}" 
+                         Style="{DynamicResource TextBoxStyle}"/>
+                <Label Content="Пароль" HorizontalContentAlignment="Center" 
+                       Margin="50,134,49.6,113" FontFamily="Times new Roman"
+                       FontSize="20"  Style="{DynamicResource LabelStyle}"/>
+                <Button x:Name="BtnGetPass" Content="Получить пароль" HorizontalContentAlignment="Center" 
+                    Margin="245,179,228.6,59" FontFamily="Times new Roman" FontSize="24"
+                    Height="43" Style="{DynamicResource ButtonStyle}"
+                    MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnGetPass_Click"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Height="91" Margin="0,0,0,0" Style="{DynamicResource HelpPnlStyle}">
+                <Button x:Name="BtnAddPass" Content="Добавить пароль" Margin="35,5,50,0" 
+                        Height="50" Width="120"  FontFamily="Times new Roman" FontSize="15" 
+                        Style="{DynamicResource ButtonStyle}"
+                        MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnAddPass_Click"/>
+                <Button x:Name="BtnEditPass" Content="Редактировать пароль" Margin="50,5,50,0" 
+                        Height="50" Width="155" FontFamily="Times new Roman" 
+                        FontSize="15" Style="{DynamicResource ButtonStyle}"
+                        MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnEditPass_Click"/>
+                <Button x:Name="EditPass" Content="Удалить пароль" Margin="50,5,50,0" 
+                        Height="50" Width="120" FontFamily="Times new Roman" FontSize="15"
+                        Style="{DynamicResource ButtonStyle}"
+                        MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="EditPass_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel x:Name="StpCreate" Grid.Column="1" Grid.Row="0"  Visibility="Hidden">
+            <Label Content="Критерии:" Margin="10,5,0,0" FontFamily="Times new Roman" FontSize="20" Style="{DynamicResource LabelStyle}"/>
+            <Grid Height="384" Margin="0,0,0,0">
+                <Rectangle Style="{DynamicResource HelpRectgStyle}" Margin="10,0,10,202" />
+                <CheckBox x:Name="CbxEngChar" Content= "Использовать символы aA-zZ" HorizontalAlignment="Left" Margin="28,30,0,0" VerticalAlignment="Top" Height="35" Width="284" FontFamily="Times New Roman" FontSize="20" Style="{DynamicResource CheckBoxStyle}"/>
+                <CheckBox x:Uid="CbxRuChar" Content= "Использовать символы аА-яЯ" HorizontalAlignment="Left" Margin="28,70,0,0" VerticalAlignment="Top" Height="35" Width="284" FontFamily="Times New Roman" FontSize="20"  Style="{DynamicResource CheckBoxStyle}"/>
+                <CheckBox x:Name="CbxNumChar" Content= "Использовать символы 0 - 9" HorizontalAlignment="Left" Margin="356,70,0,0" VerticalAlignment="Top" Height="35" Width="284" FontFamily="Times New Roman" FontSize="20"  Style="{DynamicResource CheckBoxStyle}"/>
+                <CheckBox x:Name="CbxOtherChar" Content= "Использовать символы !@/_-" HorizontalAlignment="Left" Margin="356,30,0,0" VerticalAlignment="Top" Height="35" Width="284" FontFamily="Times New Roman" FontSize="20"  Style="{DynamicResource CheckBoxStyle}"/>
+                <Label Content="Кол-во символов" HorizontalAlignment="Left" Margin="45,128,0,0" VerticalAlignment="Top" FontFamily="Times new Roman" FontSize="20" Style="{DynamicResource LabelStyle}"/>
+                <ComboBox x:Name="CmxLeng" HorizontalAlignment="Left" Margin="204,128,0,0" VerticalAlignment="Top" Width="168" FontFamily="Times new Roman" FontSize="20"/>
+                <TextBox x:Name="TbxGenPass" HorizontalAlignment="Left" Height="50" Margin="78,230,78,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="516" FontFamily="Times new Roman" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0,0,0,2" IsReadOnlyCaretVisible="True" Background="{x:Null}" Style="{DynamicResource TextBoxStyle}"/>
+                <Button x:Name="BtnGenPass" Content="Сгенерировать пароль" HorizontalContentAlignment="Center" 
+                    Margin="204,312,229.6,29" FontFamily="Times new Roman" FontSize="24" 
+                    Height="43" Style="{DynamicResource ButtonStyle}"
+                    MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnGenPass_Click"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="StpPropert" Grid.Column="1" Grid.Row="0" Visibility="Hidden">
+            <Label Content="Профиль:" Style="{DynamicResource LabelStyle}"
+                   FontFamily="Times new Roman" FontSize="20"
+                   Margin="10,10,0,5"/>
+            <Button x:Name="BtnProfile" Content="Изменить пароль" 
+                    Style="{DynamicResource ButtonStyle}"
+                    FontFamily="Times new Roman" FontSize="20"
+                    Margin="50,0,50,0" Height="40"/>
+            <Label Content="Темы:" Style="{DynamicResource LabelStyle}"
+                   FontFamily="Times new Roman" FontSize="20"
+                   Margin="10,20,0,5"/>
+            <ComboBox x:Name="CbxThems" Margin="30,0,30,0" 
+                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                      FontFamily="Times new Roman" FontSize="20"
+                      SelectionChanged="CbxThems_SelectionChanged" Background="White"/>
+            <Image Height="180" Margin="260,40,260.6,0" Source="Drawing/log.png"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
