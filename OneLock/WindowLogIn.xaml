@@ -53,12 +53,14 @@
                 HorizontalAlignment="Left" Margin="192,185,0,0" 
                 VerticalAlignment="Top" Width="177" Height="39"
                 FontFamily="Times New Roman" 
-                FontSize="22px" Style="{DynamicResource ButtonStyle}"/>
+                FontSize="22px" Style="{DynamicResource ButtonStyle}"
+                MouseEnter="BtnLogIn_MouseEnter" MouseLeave="BtnLogIn_MouseLeave"/>
         <Button x:Name="BtnReg" Content="Регистрация"
                 HorizontalAlignment="Left" Margin="229,229,0,0" 
                 VerticalAlignment="Top" Width="140" Height="31"
                 FontFamily="Times New Roman" 
-                FontSize="18px" Style="{DynamicResource ButtonStyle}" />
+                FontSize="18px" Style="{DynamicResource ButtonStyle}" 
+                MouseEnter="BtnLogIn_MouseEnter" MouseLeave="BtnLogIn_MouseLeave"/>
         <Image HorizontalAlignment="Left" Height="25" Margin="20,52,0,0" VerticalAlignment="Top" Width="25" Source="Drawing/user-256.png"/>
         
         <Button x:Name="BtnShow" Content="" HorizontalAlignment="Left" Margin="19,139,0,0" VerticalAlignment="Top" Width="25" Height="25">

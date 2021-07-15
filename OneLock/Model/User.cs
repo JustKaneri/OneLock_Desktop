@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace OneLock.Model
 {
     [Serializable]
-    class User
+    public class User
     {
         private string loginUser;
         private string passwordUser;

@@ -61,9 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controlls\PasswordControl.cs" />
-    <Compile Include="Controlls\StyleControl.cs" />
-    <Compile Include="Controlls\UserControl.cs" />
+    <Compile Include="Controlls\PasswordControler.cs" />
+    <Compile Include="Controlls\StyleControler.cs" />
+    <Compile Include="Controlls\UserControler.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="WindowMain.xaml.cs">

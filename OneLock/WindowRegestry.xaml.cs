@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using OneLock.Controlls;
 
 namespace OneLock
@@ -13,7 +14,7 @@ namespace OneLock
             InitializeComponent();
             BtnShow.Click += BtnShow_Click;
 
-            StyleControl.SetStyle();
+            StyleControler.SetStyle();
         }
 
         private void BtnShow_Click(object sender, RoutedEventArgs e)
@@ -37,7 +38,40 @@ namespace OneLock
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TbxLogin.Text))
+            {
+                MessageBox.Show("Укажите логин", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(TbxPass.Password))
+            {
+                MessageBox.Show("Укажите пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            UserControler user = new UserControler();
+
+            try
+            {
+                user.Regestry(TbxLogin.Text, TbxPass.Password);
+            }
+            catch (System.Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+           
+        }
+
+        private void BtnReg_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ((Button)sender).Opacity = 0.75;
+        }
+
+        private void BtnReg_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ((Button)sender).Opacity = 1;
         }
     }
 }

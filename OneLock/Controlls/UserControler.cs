@@ -9,7 +9,7 @@ using OneLock.Model;
 
 namespace OneLock.Controlls
 {
-    class UserControl
+    public class UserControler
     {
         private User _user;
 
@@ -39,7 +39,7 @@ namespace OneLock.Controlls
                 throw new FileNotFoundException("User not found");
 
             BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream fs = File.Create(AppDomain.CurrentDomain.BaseDirectory + "" + login + ".ol"))
+            using (FileStream fs = File.OpenRead(AppDomain.CurrentDomain.BaseDirectory + "" + login + ".ol"))
             {
                 _user = (User)bf.Deserialize(fs);
             }
@@ -92,7 +92,7 @@ namespace OneLock.Controlls
         {
             BinaryFormatter bf = new BinaryFormatter();
 
-            using (FileStream fs = File.Create(AppDomain.CurrentDomain.BaseDirectory + "" + _user.LoginUser + ".ol"))
+            using (FileStream fs = File.OpenWrite(AppDomain.CurrentDomain.BaseDirectory + "" + _user.LoginUser + ".ol"))
             {
                 bf.Serialize(fs, _user);
             }

@@ -63,6 +63,7 @@
                 HorizontalAlignment="Left" Margin="97,198,0,0" 
                 VerticalAlignment="Top" Width="207" Height="43" 
                 FontFamily="Times New Roman" FontSize="22px"
-                Click="BtnReg_Click" Style="{DynamicResource ButtonStyle}" />
+                Click="BtnReg_Click" Style="{DynamicResource ButtonStyle}"
+                MouseEnter="BtnReg_MouseEnter" MouseLeave="BtnReg_MouseLeave"/>
     </Grid>
 </Window>

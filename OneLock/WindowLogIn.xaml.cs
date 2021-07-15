@@ -22,15 +22,16 @@ namespace OneLock
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserControler user;
+
         public MainWindow()
         {
-
             InitializeComponent();
             BtnShow.Click += BtnShow_Click;
             BtnLogIn.Click += BtnLogIn_Click;
             BtnReg.Click += BtnReg_Click;
 
-            StyleControl.SetStyle();
+            StyleControler.SetStyle();
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,32 @@ namespace OneLock
 
         private void BtnLogIn_Click(object sender, RoutedEventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(TbxLogin.Text))
+            {
+                MessageBox.Show("Укажите логин","Внимание",MessageBoxButton.OK,MessageBoxImage.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TbxPass.Password))
+            {
+                MessageBox.Show("Укажите пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            user = new UserControler();
+            try
+            {
+                user.Authorization(TbxLogin.Text, TbxPass.Password);
+            }
+            catch (System.Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
             WindowMain main = new WindowMain();
+            main.User = user;
             main.Show();
             this.Close();
         }
@@ -66,6 +92,16 @@ namespace OneLock
                 TbxOpenPass.Text = TbxPass.Password;
             }
             
+        }
+
+        private void BtnLogIn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Opacity = 0.5;
+        }
+
+        private void BtnLogIn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Opacity = 1;
         }
     }
 }

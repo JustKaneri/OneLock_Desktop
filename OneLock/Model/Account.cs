@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OneLock.Model
 {
     [Serializable]
-    class Account
+    public class Account
     {
         private string login;
 

@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace OneLock.Controlls
 {
-    public static class StyleControl
+    public static class StyleControler
     {
         public static void UpadateStyle(string currentThem)
         {

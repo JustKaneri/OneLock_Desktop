@@ -12,9 +12,12 @@ namespace OneLock
     /// </summary>
     public partial class WindowMain : Window
     {
+        public UserControler User { get; set; }
+
         public WindowMain()
         {
             InitializeComponent();
+
             StpPass.Visibility = Visibility.Visible;
 
             CbxThems.Items.Add("Светлая");
@@ -32,6 +35,7 @@ namespace OneLock
             CmbPass.SelectedIndex = 0;
 
             SetStyle();
+
         }
 
         private void SetStyle()
@@ -95,7 +99,7 @@ namespace OneLock
 
         private void BtnGetPass_Click(object sender, RoutedEventArgs e)
         {
-
+  
         }
 
         private void EditPass_Click(object sender, RoutedEventArgs e)
@@ -115,14 +119,23 @@ namespace OneLock
 
         private void BtnGenPass_Click(object sender, RoutedEventArgs e)
         {
+            TbxGenPass.Text = "";
 
+            if (CbxEngChar.IsChecked == false & CbxRuChar.IsChecked == false & CbxNumChar.IsChecked == false & CbxOtherChar.IsChecked == false)
+            {
+                MessageBox.Show("Выберите критерии для создания пароля", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            TbxGenPass.Text = PasswordControler.GeneratingPassword(int.Parse(CmxLeng.Text), CbxRuChar.IsChecked ?? false,
+                CbxEngChar.IsChecked ?? false, CbxNumChar.IsChecked ?? false, CbxOtherChar.IsChecked ?? false);
         }
 
         private void CbxThems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string currentThem = CbxThems.SelectedItem.ToString().ToLower();
 
-            StyleControl.UpadateStyle(currentThem);
+            StyleControler.UpadateStyle(currentThem);
         }
     }
 }
