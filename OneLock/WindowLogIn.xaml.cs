@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OneLock.Controlls;
 
 namespace OneLock
 {
@@ -29,38 +30,7 @@ namespace OneLock
             BtnLogIn.Click += BtnLogIn_Click;
             BtnReg.Click += BtnReg_Click;
 
-            SetStyle();
-        }
-
-        private void SetStyle()
-        {
-            string them = "";
-
-            if (File.Exists("LightThem.cnf"))
-            {
-                them = "LightThem";
-            }
-                
-
-            if (File.Exists("DarkThem.cnf"))
-            {
-                them = "DarkThem";
-            }
-
-            if (File.Exists("PurpureThem.cnf"))
-            {
-                them = "PurpureThem";
-            }
-
-
-
-            var uri = new Uri("Styles\\"+them + ".xaml", UriKind.Relative);
-
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-
+            StyleControl.SetStyle();
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)

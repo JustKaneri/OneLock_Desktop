@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneLock.Controlls;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,9 +19,11 @@ namespace OneLock
 
             CbxThems.Items.Add("Светлая");
             CbxThems.Items.Add("Темная");
-            CbxThems.Items.Add("Фиолетовая-зеленая");
+            CbxThems.Items.Add("Фиолетово-зеленая");
+            CbxThems.Items.Add("Темно-красная");
+            CbxThems.Items.Add("Неоновая");
 
-            for (int i = 4; i <= 16; i+=4)
+            for (int i = 4; i <= 16; i += 4)
             {
                 CmxLeng.Items.Add(i);
             }
@@ -33,35 +36,20 @@ namespace OneLock
 
         private void SetStyle()
         {
-            string them = "";
-
             if (File.Exists("LightThem.cnf"))
-            {
-                them = "LightThem";
                 CbxThems.SelectedIndex = 0;
-            }
-
 
             if (File.Exists("DarkThem.cnf"))
-            {
-                them = "DarkThem";
                 CbxThems.SelectedIndex = 1;
-            }
 
             if (File.Exists("PurpureThem.cnf"))
-            {
-                them = "PurpureThem";
                 CbxThems.SelectedIndex = 2;
-            }
 
+            if (File.Exists("RedThem.cnf"))
+                CbxThems.SelectedIndex = 3;
 
-            var uri = new Uri("Styles\\" + them + ".xaml", UriKind.Relative);
-
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-
+            if (File.Exists("NeonThem.cnf"))
+                CbxThems.SelectedIndex = 4;
         }
 
         private void BtnPassw_MouseEnter(object sender, MouseEventArgs e)
@@ -134,28 +122,7 @@ namespace OneLock
         {
             string currentThem = CbxThems.SelectedItem.ToString().ToLower();
 
-            currentThem = currentThem == "светлая" ? "LightThem" : currentThem;
-            currentThem = currentThem == "темная" ? "DarkThem" : currentThem;
-            currentThem = currentThem == "фиолетовая-зеленая" ? "PurpureThem" : currentThem;
-
-            if (File.Exists("LightThem.cnf"))
-                File.Delete("LightThem.cnf");
-
-            if (File.Exists("DarkThem.cnf"))
-                File.Delete("DarkThem.cnf");
-
-            if (File.Exists("PurpureThem.cnf"))
-                File.Delete("PurpureThem.cnf");
-
-            var uri = new Uri("Styles\\" + currentThem+ ".xaml", UriKind.Relative);
-
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-
-
-            File.Create(currentThem + ".cnf");
+            StyleControl.UpadateStyle(currentThem);
         }
     }
 }
