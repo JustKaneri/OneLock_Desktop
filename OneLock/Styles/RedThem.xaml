@@ -1,12 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:OneLock.Styles">
+    
     <Style x:Key="GridStyle" TargetType="Grid">
         <Setter Property="Background" Value="#5E0F0E"/>
     </Style>
 
+    <!--#D17E4F-->
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
-        <Setter Property="BorderBrush" Value="#D17E4F"/>
+        <Setter Property="BorderBrush" Value="#FFD9611D"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -30,15 +32,15 @@
     </Style>
 
     <Style x:Key="RectgStyleOne" TargetType="Rectangle">
-        <Setter Property="Fill" Value="#D17E4F"/>
+        <Setter Property="Fill" Value="#FFD9611D"/>
     </Style>
 
     <Style x:Key="HelpRectgStyle" TargetType="Rectangle">
-        <Setter Property="Fill" Value="#7FD17E4C"/>
+        <Setter Property="Fill" Value="#7FD9611D"/>
     </Style>
 
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
-        <Setter Property="BorderBrush" Value="#D17E4F"/>
+        <Setter Property="BorderBrush" Value="#FFD9611D"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -70,11 +72,11 @@
     </Style>
 
     <Style x:Key="HelpPnlStyle" TargetType="StackPanel">
-        <Setter Property="Background" Value="#7FD17E4C"/>
+        <Setter Property="Background" Value="#7FD9611D"/>
     </Style>
 
     <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#D17E4F"/>
+        <Setter Property="Background" Value="#FFD9611D"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>

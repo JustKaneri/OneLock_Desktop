@@ -14,7 +14,6 @@ namespace OneLock.Controlls
             currentThem = currentThem == "темно-красная" ? "RedThem" : currentThem;
             currentThem = currentThem == "неоновая" ? "NeonThem" : currentThem;
 
-            DeleteOldThem();
 
             var uri = new Uri("Styles\\" + currentThem + ".xaml", UriKind.Relative);
 
@@ -23,7 +22,11 @@ namespace OneLock.Controlls
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
-            File.Create(currentThem + ".cnf");
+
+            DeleteOldThem();
+
+            var file = File.Create(currentThem + ".cnf");
+            file.Close();
         }
 
         private static void DeleteOldThem()
