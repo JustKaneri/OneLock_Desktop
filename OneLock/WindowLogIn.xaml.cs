@@ -69,8 +69,7 @@ namespace OneLock
             }
 
 
-            WindowMain main = new WindowMain();
-            main.User = user;
+            WindowMain main = new WindowMain(user);
             main.Show();
             this.Close();
         }

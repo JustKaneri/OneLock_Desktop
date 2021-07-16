@@ -12,19 +12,12 @@ namespace OneLock
     /// </summary>
     public partial class WindowMain : Window
     {
-        public UserControler User { get; set; }
+        private UserControler User;
 
-        public WindowMain()
+        public WindowMain(UserControler user)
         {
             InitializeComponent();
-
-            StpPass.Visibility = Visibility.Visible;
-
-            CbxThems.Items.Add("Светлая");
-            CbxThems.Items.Add("Темная");
-            CbxThems.Items.Add("Фиолетово-зеленая");
-            CbxThems.Items.Add("Темно-красная");
-            CbxThems.Items.Add("Неоновая");
+            User = user;
 
             for (int i = 4; i <= 16; i += 4)
             {
@@ -32,14 +25,33 @@ namespace OneLock
             }
 
             CmxLeng.SelectedIndex = 0;
-            CmbPass.SelectedIndex = 0;
 
             SetStyle();
 
+            FillCmbPassword();
+
+            CmbPass.SelectedIndex = 0;
+
+        }
+
+        private void FillCmbPassword()
+        {
+            CmbPass.Items.Clear();
+
+            foreach (var item in User.GetNameAccount())
+            {
+                CmbPass.Items.Add(item);
+            }
         }
 
         private void SetStyle()
         {
+            CbxThems.Items.Add("Светлая");
+            CbxThems.Items.Add("Темная");
+            CbxThems.Items.Add("Фиолетово-зеленая");
+            CbxThems.Items.Add("Темно-красная");
+            CbxThems.Items.Add("Неоновая");
+
             if (File.Exists("LightThem.cnf"))
                 CbxThems.SelectedIndex = 0;
 
@@ -114,7 +126,16 @@ namespace OneLock
 
         private void BtnAddPass_Click(object sender, RoutedEventArgs e)
         {
+            WindowAccount account = new WindowAccount();
+            if (account.ShowDialog() == true)
+            {
+                User.AddAccount(account.Account);
 
+                FillCmbPassword();
+                CmbPass.SelectedIndex = CmbPass.Items.Count - 1;
+
+                User.SaveUsers();
+            }
         }
 
         private void BtnGenPass_Click(object sender, RoutedEventArgs e)
@@ -136,6 +157,12 @@ namespace OneLock
             string currentThem = CbxThems.SelectedItem.ToString().ToLower();
 
             StyleControler.UpadateStyle(currentThem);
+        }
+
+        private void CmbPass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CmbPass.SelectedIndex > 0)
+                User.GetLognAccount(CmbPass.SelectedIndex);
         }
     }
 }

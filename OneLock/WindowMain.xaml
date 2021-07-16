@@ -57,13 +57,13 @@
             <ComboBox x:Name="CmbPass" Height="50" Margin="100,5,100,0" 
                       FontFamily="Times new Roman" FontSize="20" 
                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                      IsReadOnly="True" />
+                      IsReadOnly="True" SelectionChanged="CmbPass_SelectionChanged"/>
 
             <Grid Height="281" Margin="0,0,0,0">
                 <Label Content="Логин:" HorizontalContentAlignment="Center"
                        Margin="50,38,49.6,213" FontFamily="Times new Roman" FontSize="20" 
                        Style="{DynamicResource LabelStyle}"/>
-                <TextBox HorizontalContentAlignment="Center" Margin="245,75,228.6,170"
+                <TextBox x:Name="TbxLogin" HorizontalContentAlignment="Center" Margin="245,75,228.6,170"
                          FontFamily="Times new Roman" FontSize="25" IsReadOnly="True" 
                          BorderThickness="0,0,0,2" Background="{x:Null}" 
                          Style="{DynamicResource TextBoxStyle}"/>

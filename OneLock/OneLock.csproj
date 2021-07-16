@@ -66,6 +66,9 @@
     <Compile Include="Controlls\UserControler.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="WindowAccount.xaml.cs">
+      <DependentUpon>WindowAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\RedThem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
