@@ -202,5 +202,15 @@ namespace OneLock
                 return;
             }
         }
+
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            WindowEditUser editUser = new WindowEditUser(User.GetUserPassword());
+            if(editUser.ShowDialog() == true)
+            {
+                User.EditUser(editUser._newPassword);
+                User.SaveUsers();
+            }
+        }
     }
 }

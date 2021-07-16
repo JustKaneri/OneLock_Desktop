@@ -118,7 +118,8 @@
             <Button x:Name="BtnProfile" Content="Изменить пароль" 
                     Style="{DynamicResource ButtonStyle}"
                     FontFamily="Times new Roman" FontSize="20"
-                    Margin="50,0,50,0" Height="40"/>
+                    Margin="50,0,50,0" Height="40"
+                    Click="BtnProfile_Click"/>
             <Label Content="Темы:" Style="{DynamicResource LabelStyle}"
                    FontFamily="Times new Roman" FontSize="20"
                    Margin="10,20,0,5"/>
