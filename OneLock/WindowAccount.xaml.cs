@@ -12,17 +12,30 @@ namespace OneLock
     {
         public Account Account;
 
-        public WindowAccount()
+        public WindowAccount(string Name,string Login,string Pass)
         {
             InitializeComponent();
             StyleControler.SetStyle();
+
+            if(Name != null)
+            {
+                TbxName.Text = Name;
+                TbxLogin.Text = Login;
+                TbxPass.Password = Pass;
+            }
         }
 
         private void BtnLogIn_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(TbxName.Text) || string.IsNullOrWhiteSpace(TbxLogin.Text) || string.IsNullOrWhiteSpace(TbxPass.Password))
+            if(string.IsNullOrWhiteSpace(TbxName.Text) || string.IsNullOrWhiteSpace(TbxLogin.Text))
             {
                 MessageBox.Show("Заполните все поля", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(TbxPass.Password) && string.IsNullOrWhiteSpace(TbxOpenPass.Text))
+            {
+                MessageBox.Show("Укажите пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -30,7 +43,6 @@ namespace OneLock
             Account.NameAccount = TbxName.Text;
             Account.Login = TbxLogin.Text;
             Account.Password = TbxPass.Password;
-
 
             DialogResult = true;
         }
@@ -43,6 +55,7 @@ namespace OneLock
                 TbxOpenPass.Visibility = Visibility.Hidden;
                 TbxPass.Visibility = Visibility.Visible;
                 TbxPass.Password = TbxOpenPass.Text;
+                TbxOpenPass.Text = "";
             }
             else
             {
@@ -50,6 +63,7 @@ namespace OneLock
                 TbxOpenPass.Visibility = Visibility.Visible;
                 TbxPass.Visibility = Visibility.Hidden;
                 TbxOpenPass.Text = TbxPass.Password;
+                TbxPass.Password = "";
             }
 
         }

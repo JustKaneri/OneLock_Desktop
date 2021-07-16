@@ -43,10 +43,21 @@ namespace OneLock.Controlls
 
             var dir = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory);
 
+            int countFile = dir.Length;
+            int otherFile = 0;
+
             foreach (var item in dir)
             {
                 if (Path.GetExtension(item) == ".cnf")
                     them = Path.GetFileNameWithoutExtension(item);
+                else
+                    otherFile++;
+            }
+
+            if(otherFile == countFile)
+            {
+                File.Create("LightThem.cnf");
+                them = "LightThem";
             }
 
             var uri = new Uri("Styles\\" + them + ".xaml", UriKind.Relative);

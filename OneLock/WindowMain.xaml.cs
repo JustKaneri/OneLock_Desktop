@@ -70,7 +70,7 @@ namespace OneLock
 
         private void BtnPassw_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((Button)sender).Opacity = 0.5;
+            ((Button)sender).Opacity = 0.75;
         }
 
         private void BtnPassw_MouseLeave(object sender, MouseEventArgs e)
@@ -101,7 +101,7 @@ namespace OneLock
 
         private void BtnAddPass_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((Button)sender).Opacity = 0.5;
+            ((Button)sender).Opacity = 0.75;
         }
 
         private void BtnAddPass_MouseLeave(object sender, MouseEventArgs e)
@@ -111,22 +111,37 @@ namespace OneLock
 
         private void BtnGetPass_Click(object sender, RoutedEventArgs e)
         {
-  
-        }
+            if(CmbPass.SelectedIndex > -1)
+            {
+                var res = MessageBox.Show("Ваш пароль: " + User.GetPasswordAccount(CmbPass.SelectedIndex) + "\n\nСкопировать пароль в буфер обмена?", "Пароль", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-        private void EditPass_Click(object sender, RoutedEventArgs e)
-        {
-
+                if (res == MessageBoxResult.Yes)
+                    Clipboard.SetText(User.GetPasswordAccount(CmbPass.SelectedIndex));
+            }
         }
 
         private void BtnEditPass_Click(object sender, RoutedEventArgs e)
         {
+            if(CmbPass.SelectedIndex > -1)
+            {
+                WindowAccount account = new WindowAccount(CmbPass.Text,User.GetLognAccount(CmbPass.SelectedIndex),User.GetPasswordAccount(CmbPass.SelectedIndex));
+                if (account.ShowDialog() == true)
+                {
+                    User.EditAccount(account.Account,CmbPass.SelectedIndex);
+                    int curentIndex = CmbPass.SelectedIndex;
+                    FillCmbPassword();
+                    CmbPass.SelectedIndex = curentIndex;
 
+                    User.SaveUsers();
+                }
+            }
+
+          
         }
 
         private void BtnAddPass_Click(object sender, RoutedEventArgs e)
         {
-            WindowAccount account = new WindowAccount();
+            WindowAccount account = new WindowAccount(null,null,null);
             if (account.ShowDialog() == true)
             {
                 User.AddAccount(account.Account);
@@ -161,8 +176,31 @@ namespace OneLock
 
         private void CmbPass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (CmbPass.SelectedIndex > 0)
-                User.GetLognAccount(CmbPass.SelectedIndex);
+            if (CmbPass.SelectedIndex > -1)
+                TbxLogin.Text = User.GetLognAccount(CmbPass.SelectedIndex);
+        }
+
+        private void BtnDelPass_Click(object sender, RoutedEventArgs e)
+        {
+            if(CmbPass.SelectedIndex > -1)
+            {
+                var res = MessageBox.Show("Удалить выбранную учетную запись? ", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (res == MessageBoxResult.Yes)
+                {
+                    User.DeleteAccount(CmbPass.SelectedIndex);
+                    TbxLogin.Text = "";
+                    FillCmbPassword();
+                    CmbPass.SelectedIndex = 0;
+                    User.SaveUsers();
+                }
+                   
+            }
+            else
+            {
+                MessageBox.Show("Выберите учетную запись для удаления", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
         }
     }
 }

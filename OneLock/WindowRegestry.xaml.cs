@@ -61,7 +61,11 @@ namespace OneLock
                 MessageBox.Show(exp.Message, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-           
+
+
+            MessageBox.Show("Успешная регистрация", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            DialogResult = true;
         }
 
         private void BtnReg_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

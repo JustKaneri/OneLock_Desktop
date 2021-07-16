@@ -17,9 +17,7 @@ using OneLock.Controlls;
 
 namespace OneLock
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         private UserControler user;
@@ -51,7 +49,7 @@ namespace OneLock
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TbxPass.Password))
+            if (string.IsNullOrWhiteSpace(TbxPass.Password) && string.IsNullOrWhiteSpace(TbxOpenPass.Text))
             {
                 MessageBox.Show("Укажите пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -60,7 +58,7 @@ namespace OneLock
             user = new UserControler();
             try
             {
-                user.Authorization(TbxLogin.Text, TbxPass.Password);
+                user.Authorization(TbxLogin.Text, TbxPass.Password==""?TbxOpenPass.Text:TbxPass.Password);
             }
             catch (System.Exception exp)
             {
@@ -82,6 +80,7 @@ namespace OneLock
                 TbxOpenPass.Visibility = Visibility.Hidden;
                 TbxPass.Visibility = Visibility.Visible;
                 TbxPass.Password = TbxOpenPass.Text;
+                TbxOpenPass.Text = "";
             }
             else
             {
@@ -89,13 +88,14 @@ namespace OneLock
                 TbxOpenPass.Visibility = Visibility.Visible;
                 TbxPass.Visibility = Visibility.Hidden;
                 TbxOpenPass.Text = TbxPass.Password;
+                TbxPass.Password = "";
             }
             
         }
 
         private void BtnLogIn_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((Button)sender).Opacity = 0.5;
+            ((Button)sender).Opacity = 0.75;
         }
 
         private void BtnLogIn_MouseLeave(object sender, MouseEventArgs e)

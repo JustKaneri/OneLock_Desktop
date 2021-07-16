@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OneLock"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="OneLock" Height="380" Width="380" ResizeMode="NoResize">
+        Title="OneLock" Height="319.6" Width="423.2" ResizeMode="NoResize" Background="#FFF70000">
 
     <Window.Resources>
         <Style TargetType="Button">
@@ -22,66 +22,55 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
 
-    <Grid Style="{DynamicResource GridStyle}">
-        <StackPanel>
-            <Label Content="Название:" HorizontalAlignment="Left" 
-            Margin="7,25,0,0" VerticalAlignment="Top" 
-            Width="308" FontFamily="Times New Roman" 
-            FontSize="22" HorizontalContentAlignment="Left" 
-            BorderThickness="0" Style="{DynamicResource LabelStyle}"/>
-
-            <TextBox x:Name="TbxName" Margin="17,0,35.6,0" TextWrapping="Wrap" Text="" 
-            BorderThickness="30,1,1,1" FontFamily="Times New Roman" FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
-            Style="{DynamicResource TextBoxStyle}" Background="{x:Null}" Height="29"/>
-
-            <Label Content="Логин:" HorizontalAlignment="Left" 
+    <Grid Height="290" Width="432" 
+        Style="{DynamicResource GridStyle}" Margin="-9,0,-6.2,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TextBox x:Name="TbxName" Margin="17,50,36,206" TextWrapping="Wrap" Text="" 
+                  BorderThickness="30,1,1,1" TabIndex="0" FontFamily="Times New Roman" FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
+                 Style="{DynamicResource TextBoxStyle}" Background="{x:Null}"/>
+        <TextBox x:Name="TbxOpenPass" HorizontalAlignment="Left" Height="28" 
+                 Margin="18,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+                 Width="378" BorderThickness="30,1,1,1" FontFamily="Times New Roman" 
+                 FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
+                 Visibility="Hidden" Style="{DynamicResource TextBoxStyle}" Background="{x:Null}"/>
+        <PasswordBox x:Name="TbxPass" TabIndex="2" HorizontalAlignment="Left" Margin="18,0,0,61" VerticalAlignment="Bottom"
+                     Width="378" Height="28" BorderThickness="30,1,1,1" 
+                     FontFamily="Times New Roman" FontSize="22px" SelectionBrush="#FF00A1FF" 
+                     Style="{DynamicResource PasswordBoxStyle}" Background="{x:Null}"/>
+        <Label Content="Название:" HorizontalAlignment="Left" 
                Margin="7,10,0,0" VerticalAlignment="Top" 
                Width="308" FontFamily="Times New Roman" 
                FontSize="22" HorizontalContentAlignment="Left" 
                BorderThickness="0" Style="{DynamicResource LabelStyle}"/>
-
-            <TextBox x:Name="TbxLogin" Margin="15,5,37,04" TextWrapping="Wrap" Text="" 
-                  BorderThickness="30,1,1,1" FontFamily="Times New Roman" FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
-                 Style="{DynamicResource TextBoxStyle}" Background="{x:Null}"/>
-
-
-            <Label Content="Пароль:" HorizontalAlignment="Left" Margin="7,5,0,0"
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="8,161,0,0"
                VerticalAlignment="Top" Width="308" FontFamily="Times New Roman"
                FontSize="22" HorizontalContentAlignment="Left" 
                BorderThickness="0" BorderBrush="Black"
                RenderTransformOrigin="0.5,0.5"  Style="{DynamicResource LabelStyle}"/>
-
-            <PasswordBox x:Name="TbxPass" Margin="15,0,35.6,0" VerticalAlignment="Top" Height="28" BorderThickness="30,1,1,1" 
-                     FontFamily="Times New Roman" FontSize="22px" SelectionBrush="#FF00A1FF" 
-                     Style="{DynamicResource PasswordBoxStyle}" Background="{x:Null}"/>
-        </StackPanel>
-
-
-        <TextBox x:Name="TbxOpenPass" HorizontalAlignment="Left" Height="28" 
-                 Margin="15,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
-                 Width="323" BorderThickness="30,1,1,1" FontFamily="Times New Roman" 
-                 FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
-                 Visibility="Visible" Style="{DynamicResource TextBoxStyle}" Background="{x:Null}"/>
-
-
-        <Button x:Name="BtnLogIn" Content="Сохранить" Margin="99,285,96.8,0" 
-                VerticalAlignment="Top" Height="39"
+        <Button x:Name="BtnLogIn" Content="Сохранить" 
+                HorizontalAlignment="Left" Margin="123,252,0,0" 
+                VerticalAlignment="Top" Width="170" Height="28"
                 FontFamily="Times New Roman" 
+                Click="BtnLogIn_Click"
                 FontSize="22px" Style="{DynamicResource ButtonStyle}"
-                MouseEnter="BtnLogIn_MouseEnter" MouseLeave="BtnLogIn_MouseLeave"
-                Click="BtnLogIn_Click"/>
-        <Image HorizontalAlignment="Left" Height="25" Margin="20,141,0,0" VerticalAlignment="Top" Width="25" Source="Drawing/user-256.png"/>
+                MouseEnter="BtnLogIn_MouseEnter" MouseLeave="BtnLogIn_MouseLeave"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="20,52,0,0" VerticalAlignment="Top" Width="25" Source="Drawing/user-256.png"/>
 
-        <Button x:Name="BtnShow" Click="BtnShow_Click" Content="" HorizontalAlignment="Left" Margin="17,211,0,0" VerticalAlignment="Top" Width="25" Height="25">
+        <Button x:Name="BtnShow" Content="" HorizontalAlignment="Left" Margin="20,203,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="BtnShow_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Drawing/lock-xxl.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-
-
-        <Image HorizontalAlignment="Left" Height="25" Margin="20,62,0,0" VerticalAlignment="Top" Width="25" MaxWidth="25" MaxHeight="25" Source="Drawing/user-256.png"/>
+        <TextBox x:Name="TbxLogin" Margin="17,129,36,129" TextWrapping="Wrap" Text="" 
+            BorderThickness="30,1,1,1" TabIndex="1" FontFamily="Times New Roman" FontSize="22px" TextAlignment="Left" SelectionBrush="{x:Null}" 
+            Style="{DynamicResource TextBoxStyle}" Background="{x:Null}"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" 
+            Margin="7,89,0,0" VerticalAlignment="Top" 
+            Width="308" FontFamily="Times New Roman" 
+            FontSize="22" HorizontalContentAlignment="Left" 
+            BorderThickness="0" Style="{DynamicResource LabelStyle}"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="20,131,0,0" VerticalAlignment="Top" Width="25" Source="Drawing/user-256.png"/>
     </Grid>
+
 </Window>

@@ -83,9 +83,19 @@ namespace OneLock.Controlls
             _user.AccountArray[index] = account;
         }
 
+        public void DeleteAccount(int index)
+        {
+            _user.AccountArray.RemoveAt(index);
+        }
+
         public void EditUser(string newPassword)
         {
             _user.PasswordUser = newPassword;
+        }
+
+        public string GetUserPassword()
+        {
+            return _user.PasswordUser;
         }
 
         public void SaveUsers()

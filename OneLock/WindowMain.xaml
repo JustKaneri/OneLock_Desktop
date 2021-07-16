@@ -85,10 +85,10 @@
                         Height="50" Width="155" FontFamily="Times new Roman" 
                         FontSize="15" Style="{DynamicResource ButtonStyle}"
                         MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnEditPass_Click"/>
-                <Button x:Name="EditPass" Content="Удалить пароль" Margin="50,0,50,0" 
+                <Button x:Name="BtnDelPass" Content="Удалить пароль" Margin="50,0,50,0" 
                         Height="50" Width="120" FontFamily="Times new Roman" FontSize="15"
                         Style="{DynamicResource ButtonStyle}"
-                        MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="EditPass_Click"/>
+                        MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnDelPass_Click"/>
             </StackPanel>
 
         </StackPanel>
@@ -103,7 +103,7 @@
                 <CheckBox x:Name="CbxOtherChar" Content= "Использовать символы !@/_-" HorizontalAlignment="Left" Margin="356,30,0,0" VerticalAlignment="Top" Height="35" Width="284" FontFamily="Times New Roman" FontSize="20"  Style="{DynamicResource CheckBoxStyle}"/>
                 <Label Content="Кол-во символов" HorizontalAlignment="Left" Margin="45,128,0,0" VerticalAlignment="Top" FontFamily="Times new Roman" FontSize="20" Style="{DynamicResource LabelStyle}"/>
                 <ComboBox x:Name="CmxLeng" HorizontalAlignment="Left" Margin="204,128,0,0" VerticalAlignment="Top" Width="168" FontFamily="Times new Roman" FontSize="20"/>
-                <TextBox x:Name="TbxGenPass" HorizontalAlignment="Left" Height="50" Margin="78,230,78,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="516" FontFamily="Times new Roman" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0,0,0,2" IsReadOnlyCaretVisible="True" Background="{x:Null}" Style="{DynamicResource TextBoxStyle}"/>
+                <TextBox x:Name="TbxGenPass" IsReadOnly="True" HorizontalAlignment="Left" Height="50" Margin="78,230,78,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="516" FontFamily="Times new Roman" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0,0,0,2" IsReadOnlyCaretVisible="True" Background="{x:Null}" Style="{DynamicResource TextBoxStyle}"/>
                 <Button x:Name="BtnGenPass" Content="Сгенерировать пароль" HorizontalContentAlignment="Center" 
                     Margin="204,312,229.6,29" FontFamily="Times new Roman" FontSize="24" 
                     Height="43" Style="{DynamicResource ButtonStyle}"
