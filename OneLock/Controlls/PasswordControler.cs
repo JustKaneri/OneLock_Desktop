@@ -9,12 +9,6 @@ namespace OneLock.Controlls
 {
     public static class PasswordControler
     {
-        private static string rusAlfa = "АаБбВвГгДдЕеЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщъЫыьЭэЮюЯя";
-        private static string engAlfa = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        private static string numAlfa = "0123456789";
-        private static string otherAlfa = "!@/_-";
-
-
         /// <summary>
         /// Генерация пароля.
         /// </summary>
@@ -27,30 +21,37 @@ namespace OneLock.Controlls
         public static string GeneratingPassword(int lengt, bool IsRuAlf, bool IsEngAlf, bool IsDigt, bool IsChar)
         {
             string value = "";
+
             string Alfa = "";
 
-            if (IsRuAlf)
-                Alfa += rusAlfa;
+            if(IsRuAlf)
+                for (char i = 'а'; i <= 'я'; i++)
+                {
+                    Alfa += i;
+                    Alfa += Char.ToUpper(i);
+                }
 
             if (IsEngAlf)
-                Alfa += engAlfa;
+                for (char i = 'a'; i <= 'z'; i++)
+                {
+                    Alfa += i;
+                    Alfa += Char.ToUpper(i);
+                }
 
             if (IsDigt)
-                Alfa += numAlfa;
+                Alfa += "0123456789";
 
             if (IsChar)
-                Alfa += otherAlfa;
+                Alfa += "!@/_-";
+
+
 
             Random rnd = new Random();
 
-
             for (int i = 0; i < lengt; i++)
             {
-                char rndChar = Alfa[rnd.Next(Alfa.Length)];
-
-                value += rndChar;
+                value += Alfa[rnd.Next(Alfa.Length)];
             }
-
             return value;
         }
     }

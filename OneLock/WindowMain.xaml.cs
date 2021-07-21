@@ -19,7 +19,7 @@ namespace OneLock
             InitializeComponent();
             User = user;
 
-            for (int i = 4; i <= 24; i += 2)
+            for (int i = 4; i <= 16; i += 4)
             {
                 CmxLeng.Items.Add(i);
             }
