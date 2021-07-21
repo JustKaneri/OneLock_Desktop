@@ -77,15 +77,15 @@
             </Grid>
 
             <StackPanel Orientation="Horizontal" Height="91" Margin="0,0,0,0" Style="{DynamicResource HelpPnlStyle}">
-                <Button x:Name="BtnAddPass" Content="Добавить пароль" Margin="35,0,50,0" 
+                <Button x:Name="BtnAddPass" Content="Добавить пароль" Margin="35,-5,50,0" 
                         Height="50" Width="120"  FontFamily="Times new Roman" FontSize="15" 
                         Style="{DynamicResource ButtonStyle}"
                         MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnAddPass_Click"/>
-                <Button x:Name="BtnEditPass" Content="Редактировать пароль" Margin="50,0,50,0" 
+                <Button x:Name="BtnEditPass" Content="Редактировать пароль" Margin="50,-5,50,0" 
                         Height="50" Width="155" FontFamily="Times new Roman" 
                         FontSize="15" Style="{DynamicResource ButtonStyle}"
                         MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnEditPass_Click"/>
-                <Button x:Name="BtnDelPass" Content="Удалить пароль" Margin="50,0,50,0" 
+                <Button x:Name="BtnDelPass" Content="Удалить пароль" Margin="50,-5,50,0" 
                         Height="50" Width="120" FontFamily="Times new Roman" FontSize="15"
                         Style="{DynamicResource ButtonStyle}"
                         MouseEnter="BtnAddPass_MouseEnter" MouseLeave="BtnAddPass_MouseLeave" Click="BtnDelPass_Click"/>
