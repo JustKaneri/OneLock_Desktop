@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OneLock"
         mc:Ignorable="d"
         Title="OneLock" Height="307.405" Width="405" 
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="White" >
     
     <Window.Resources>
         <Style TargetType="Button">

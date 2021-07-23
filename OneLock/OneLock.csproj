@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Ico2.ico</ApplicationIcon>
+    <ApplicationIcon>Ico5.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EncoderDll">
@@ -154,9 +154,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Ico2.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Drawing\user-256.png" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +165,8 @@
   <ItemGroup>
     <Resource Include="Drawing\Ico3.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Ico5.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
